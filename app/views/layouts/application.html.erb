@@ -7,8 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if flash[:messages] %>
+    <% flash[:messages].each do |message| %>
+      <%= message %>
+      <br>
+    <% end %>
+  <% end %>
+
+  <% if logged_in? %>
+    <p>Logged in as: <%= current_user.email %> </p>
+    <p><%= button_to 'Logout', session_url, method: :delete %></p>
+    <br>
+    <p> <%= link_to "All Bands", bands_url %> </p>
+  <% end %>
 
 <%= yield %>
+
 
 </body>
 </html>
