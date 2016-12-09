@@ -13,6 +13,9 @@
 class Note < ActiveRecord::Base
   validates :user_id, :track_id, :text, presence: true
 
-  belongs_to :user
+  belongs_to :author,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :User
   belongs_to :track
 end

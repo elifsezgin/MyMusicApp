@@ -16,4 +16,5 @@ class Track < ActiveRecord::Base
   validates :kind, inclusion: %w(bonus regular)
 
   belongs_to :album
+  has_many :notes, dependent: :destroy
 end
