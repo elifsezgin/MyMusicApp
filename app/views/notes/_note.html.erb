@@ -1,2 +1,2 @@
 <p><b><%= note.author.email %></b> wrote <%= note.text %></p>
-<%= button_to "Delete note", note_url(note), method: :delete %>
+<%= button_to "Delete note", note_url(note), method: :delete if current_user.id == note.author.id %>
